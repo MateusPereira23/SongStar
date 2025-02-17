@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerseFinder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #03f5fd, #03ecc5); /* Gradiente bonito */
+            color: #fff;
+        }
+
+        /* Estilo da Navbar */
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #FF6347;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .playlist {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .song {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .song img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .song img:hover {
+            transform: scale(1.1); /* Efeito de zoom na imagem */
+        }
+
+        .song p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #1b1b1a;
+        }
+
+        .song a {
+            display: block;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .song a:hover {
+            color: #FF6347;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="playlists.html">Playlist</a>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h1>Playlist <span>POP</span></h1>
+        </div>
+
+        <div class="playlist">
+            <div class="song">
+                <a href="pop/LikkeLy-IFollowRiver.html#lyrics-ifollowriver">
+                    <img src="assets/ifollowriver.jpg" alt="Lykke Li - I Follow River">
+                </a>
+                <p>Lykke Li - I Follow River</p>
+                <a href="pop/LikkeLy-IFollowRiver.html">Ver Letra</a>
+        </div>
+        <div class="song">
+            <a href="pop/DuaLipa-BreakMyHeart.html#lyrics-breakmyheart">
+                <img src="assets/breakmyheart.jpg" alt="Dua Lipa - Break My Heart">
+            </a>
+            <p>Dua Lipa - Break My Heart</p>
+            <a href="pop/DuaLipa-BreakMyHeart.html">Ver Letra</a>
+    </div>
+    <div class="song">
+        <a href="pop/NellyFurtado-SayItRight.html#lyrics-sayitright">
+            <img src="assets/sayitright.jpg" alt="Nelly Furtado - Say it Right">
+        </a>
+        <p>Nelly Furtado - Say it Right</p>
+        <a href="pop/NellyFurtado-SayItRight.html">Ver Letra</a>
+</div>
+    </div>
+    
+</body>
+</html>

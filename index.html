@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <title>SongStar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: #000;
+        color: #1E90FF;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Estilização do título SongStar */
+    .left h1 {
+        font-size: 2rem;
+        color: #1E90FF;
+        font-weight: 600;
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ajuste da cor da imagem ao lado do texto */
+    .left img.logo {
+        width: 40px;
+        margin-right: 10px;
+        filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+    }
+
+    /* Links de navegação */
+    .right {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .right a {
+        color: #1E90FF;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .right a:hover {
+        color: #fff;
+    }
+
+    /* Seção principal */
+    .hero {
+        text-align: center;
+        background: rgba(0, 0, 139, 0.8);
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(30, 144, 255, 0.5);
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .hero input {
+        width: 300px;
+        padding: 12px;
+        font-size: 18px;
+        border: 2px solid #1E90FF;
+        border-radius: 5px;
+        outline: none;
+        background-color: #000;
+        color: white;
+    }
+
+    .hero input:focus {
+        border-color: white;
+    }
+
+    /* Galeria de músicas populares */
+    .popular-songs {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .popular-songs h2 {
+        font-size: 28px;
+        color: #1E90FF; /* Alterado de amarelo para azul */
+        margin-bottom: 30px;
+    }
+    
+    /* Centraliza as músicas ao aparecer */
+    .popular-songs .grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .song {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .song img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Removendo sublinhado do nome da música */
+    .song a {
+        text-decoration: none;
+    }
+
+    /* Grid responsivo para exibição das músicas */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .song {
+        text-align: center;
+        position: relative;
+    }
+
+    /* Hover da imagem agora em azul */
+    .song:hover img {
+        transform: scale(1.1);
+        box-shadow: 0px 8px 16px rgba(30, 144, 255, 0.6);
+    }
+
+    .song p {
+        margin-top: 10px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <img src="favicon/logostar.svg" alt="Logo" class="logo">
+            <h1>SongStar</h1>
+        </div>
+        <div class="right">
+            <a href="index.html">Home</a>
+            <a href="playlists.html">Playlist</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Encontre a sua música favorita</h1>
+        <input type="text" placeholder="Digite o nome da música ou artista...">
+    </section>
+
+    <section class="popular-songs">
+        <h2>Top Letras do Momento</h2>
+        <div class="grid">
+            <div class="song">
+                <a href="pop/DuaLipa-BreakMyHeart.html#lyrics-breakmyheart">
+                    <img src="assets/breakmyheart.jpg" alt="Dua Lipa - Break My Heart">
+                    <p>Dua Lipa - Break My Heart</p>
+                </a>
+            </div>
+            <div class="song">
+                <a href="pop/NellyFurtado-sayItRight.html#lyrics-sayright">
+                    <img src="assets/sayitright.jpg" alt="Nelly Furtado - Say it Right">
+                    <p>Nelly Furtado - Say it Right</p>
+                </a>
+            </div>
+            <div class="song">
+                <a href="pop/LikkeLy-IFollowRiver.html#lyrics-ifollowriver">
+                    <img src="assets/ifollowriver.jpg" alt="Likke Ly-I Follow River">
+                    <p>Likke Ly-I Follow River</p>
+                </a>
+            </div>
+
+</body>
+</html>
