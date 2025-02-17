@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <title>SongStar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <style>
     * {
@@ -98,6 +99,7 @@
 
     .hero input:focus {
         border-color: white;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
 
     /* Galeria de músicas populares */
@@ -108,10 +110,10 @@
 
     .popular-songs h2 {
         font-size: 28px;
-        color: #1E90FF; /* Alterado de amarelo para azul */
+        color: #1E90FF;
         margin-bottom: 30px;
     }
-    
+
     /* Centraliza as músicas ao aparecer */
     .popular-songs .grid {
         display: flex;
@@ -134,10 +136,9 @@
         max-width: 250px;
         height: auto;
         border-radius: 10px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     }
 
-    /* Removendo sublinhado do nome da música */
     .song a {
         text-decoration: none;
     }
@@ -155,7 +156,6 @@
         position: relative;
     }
 
-    /* Hover da imagem agora em azul */
     .song:hover img {
         transform: scale(1.1);
         box-shadow: 0px 8px 16px rgba(30, 144, 255, 0.6);
@@ -166,6 +166,37 @@
         color: white;
         font-size: 16px;
         font-weight: bold;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero input {
+            width: 90%;
+            font-size: 16px;
+        }
+
+        .popular-songs h2 {
+            font-size: 24px;
+        }
+
+        .grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .song img {
+            max-width: 200px;
+        }
+    }
+
+    /* Modo Claro */
+    .light-theme {
+        background-color: #fff;
+        color: #000;
     }
 </style>
 <body>
@@ -206,6 +237,41 @@
                     <p>Likke Ly-I Follow River</p>
                 </a>
             </div>
+        </div>
+    </section>
 
+    <button id="theme-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: #1E90FF; color: #fff; border: none; border-radius: 5px;">
+        Switch Theme
+    </button>
+
+    <script>
+        // Alternar tema
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+        });
+
+        // Efeito nas imagens de música
+        const songImages = document.querySelectorAll('.song img');
+        songImages.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                img.style.transform = 'scale(1.1)';
+                img.style.boxShadow = '0px 8px 16px rgba(30, 144, 255, 0.6)';
+            });
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1)';
+                img.style.boxShadow = 'none';
+            });
+        });
+
+        // Carrossel de músicas
+        let currentIndex = 0;
+        const songs = document.querySelectorAll('.song');
+        setInterval(() => {
+            songs[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % songs.length;
+            songs[currentIndex].classList.add('active');
+        }, 3000);
+    </script>
 </body>
 </html>

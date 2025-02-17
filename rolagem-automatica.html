@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolagem Automática</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .speed-control {
+            position: fixed;
+            bottom: 60px;
+            left: 20px;
+        }
+
+        p {
+            margin: 20px;
+            font-size: 18px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="textContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada justo sed dolor suscipit, sed iaculis ante dignissim. Sed non suscipit enim. Nullam tincidunt felis sit amet augue dapibus, sed varius velit scelerisque. Etiam vehicula libero vitae purus convallis, vel suscipit felis consequat. Donec ac diam eu nulla tincidunt scelerisque. Integer bibendum enim vitae velit dictum, a eleifend enim consequat. Aliquam erat volutpat. Aenean bibendum orci sit amet orci interdum, non lacinia orci fermentum.iaculis ante dignissim. Sed non suscipit enim. Nullam tincidunt felis sit amet augue dapibus, sed varius velit scelerisque. Etiam vehicula libero vitae purus convallis, vel suscipit felis consequat. Donec ac diam eu nulla tincidunt scelerisque. Integer bibendum enim vitae velit dictum, a eleifend enim consequat. Aliquam erat volutpat. Aenean bibendum orci sit amet orci interdum, non lacinia orci fermentum.iaculis ante dignissim. Sed non suscipit enim. Nullam tincidunt felis sit amet augue dapibus, sed varius velit scelerisque. Etiam vehicula libero vitae purus convallis, vel suscipit felis consequat. Donec ac diam eu nulla tincidunt scelerisque. Integer bibendum enim vitae velit dictum, a eleifend enim consequat. Aliquam erat volutpat. Aenean bibendum orci sit amet orci interdum, non lacinia orci fermentum.iaculis ante dignissim. Sed non suscipit enim. Nullam tincidunt felis sit amet augue dapibus, sed varius velit scelerisque. Etiam vehicula libero vitae purus convallis, vel suscipit felis consequat. Donec ac diam eu nulla tincidunt scelerisque. Integer bibendum enim vitae velit dictum, a eleifend enim consequat. Aliquam erat volutpat. Aenean bibendum orci sit amet orci interdum, non lacinia orci fermentum.iaculis ante dignissim. Sed non suscipit enim. Nullam tincidunt felis sit amet augue dapibus, sed varius velit scelerisque. Etiam vehicula libero vitae purus convallis, vel suscipit felis consequat. Donec ac diam eu nulla tincidunt scelerisque. Integer bibendum enim vitae velit dictum, a eleifend enim consequat. Aliquam erat volutpat. Aenean bibendum orci sit amet orci interdum, non lacinia orci fermentum.</p>
+    
+    <button id="scrollButton">Iniciar Rolagem</button>
+    <div class="speed-control">
+        <label for="speed">Velocidade:</label>
+        <select id="speed">
+            <option value="1">Baixo</option>
+            <option value="2">Médio</option>
+        </select>
+    </div>
+
+    <script>
+        const scrollButton = document.getElementById("scrollButton");
+        const speedControl = document.getElementById("speed");
+        const textContent = document.getElementById("textContent");
+
+        let isScrolling = false;
+        let scrollInterval;
+
+        // Função para rolar suavemente até o final do parágrafo
+        function scrollSmoothly(speed) {
+            if (isScrolling) return; // Evita múltiplos cliques
+
+            isScrolling = true;
+
+            // Posição final do <p>
+            const targetPosition = textContent.offsetTop + textContent.offsetHeight - window.innerHeight;
+
+            // Inicia a rolagem
+            scrollInterval = setInterval(() => {
+                const currentPosition = window.scrollY; // Posição atual da janela visível
+
+                if (currentPosition < targetPosition) {
+                    window.scrollBy(0, speed); // Rola a página
+                } else {
+                    clearInterval(scrollInterval); // Para a rolagem quando atinge o fim do parágrafo
+                    isScrolling = false; // Libera a rolagem para o próximo clique
+                }
+            }, 20); // Intervalo ajustado para suavidade
+        }
+
+        // Evento para iniciar a rolagem ao clicar no botão
+        scrollButton.addEventListener("click", () => {
+            // Só começa a rolar novamente se não estiver rolando
+            if (!isScrolling) {
+                const speed = speedControl.value === "1" ? 1 : 2;
+                scrollSmoothly(speed);
+            }
+        });
+    </script>
+
+</body>
+</html>

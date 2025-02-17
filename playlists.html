@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerseFinder</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Vinculando o CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <style>
-        /* Reseta os margens e padding padrão */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Estilo para a Navbar */
         .navbar {
             background-color: #333;
             color: #fff;
@@ -25,17 +23,20 @@
 
         .navbar a {
             color: #fff;
-            text-decoration: none; /* Removendo o sublinhado */
+            text-decoration: none;
             margin: 0 20px;
             font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #f5a936;
         }
 
         .navbar a.active {
             font-weight: bold;
-            text-decoration: none; /* Garantindo que o sublinhado não apareça na aba ativa */
         }
 
-        /* Estilos para a seção de playlists */
         .playlist-section {
             text-align: center;
             padding: 30px;
@@ -44,9 +45,18 @@
         .playlist-section h1 {
             font-size: 36px;
             margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
         }
 
-        /* Estilo para cada item da playlist */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
         .playlist {
             display: flex;
             align-items: center;
@@ -58,37 +68,31 @@
             font-weight: bold;
             color: #fff;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .playlist:hover {
+            transform: scale(1.05);
             opacity: 0.8;
         }
 
-        /* Estilos de fundo para as playlists */
         .rock {
-            background-color: #0a0a0a; /* Vermelho para Rock */
+            background-color: #0a0a0a;
         }
 
         .pop {
-            background-color: #f5a936; /* Amarelo para POP */
+            background-color: #f5a936;
         }
 
         .hiphop {
-            background-color: #039c36; /* Verde para Hip Hop */
+            background-color: #039c36;
         }
 
-        .latino {
-            background-color: #4d79ff; /* Azul para Latino */
-        }
-
-        /* Ícones das playlists */
         .icon {
             margin-right: 15px;
             font-size: 30px;
         }
 
-        /* Estilo para o link */
         .playlist-link {
             text-decoration: none;
             color: inherit;
@@ -96,8 +100,27 @@
             width: 100%;
             height: 100%;
         }
+
+        /* Botão de voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #f5a936;
+        }
     </style>
-    
+
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="playlists.html" class="active">Playlist</a>
@@ -126,24 +149,41 @@
                 <div class="playlist-name">Hip Hop</div>
             </a>
         </div>
+    </div>
 
+    <!-- Botão para voltar ao topo -->
+    <div class="back-to-top" id="back-to-top">↑</div>
 
     <script>
-        // Adiciona o efeito hover nas playlists
-const playlists = document.querySelectorAll('.playlist');
+        // Efeito hover nas playlists
+        const playlists = document.querySelectorAll('.playlist');
 
-playlists.forEach(playlist => {
-    playlist.addEventListener('mouseenter', () => {
-        playlist.style.transform = 'scale(1.05)'; // Aumenta o tamanho
-        playlist.style.opacity = '0.8'; // Diminui a opacidade
-    });
+        playlists.forEach(playlist => {
+            playlist.addEventListener('mouseenter', () => {
+                playlist.style.transform = 'scale(1.05)';
+                playlist.style.opacity = '0.8';
+            });
 
-    playlist.addEventListener('mouseleave', () => {
-        playlist.style.transform = 'scale(1)'; // Restaura o tamanho original
-        playlist.style.opacity = '1'; // Restaura a opacidade original
-    });
-});
+            playlist.addEventListener('mouseleave', () => {
+                playlist.style.transform = 'scale(1)';
+                playlist.style.opacity = '1';
+            });
+        });
 
+        // Exibe o botão "Voltar ao topo" quando o usuário rolar a página
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Faz o scroll suave para o topo
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
